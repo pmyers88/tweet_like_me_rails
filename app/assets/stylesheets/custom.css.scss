@@ -1,0 +1,32 @@
+@import "bootstrap";
+
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+body {
+  background-color: #55ACEE;
+  height: 100%;
+}
+h1 {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  font-size: 48pt;
+}
+#content {
+  height: 100%;
+  color: white;
+  text-align: center;
+}
+#spacer {
+  height: 35%;
+}
+#account_username {
+  width: 300px;
+  border-radius: 5px;
+  font-size: 16pt;
+}
+#commit {
+  font-size: 16pt;
+}
