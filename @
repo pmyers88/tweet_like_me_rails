@@ -1,0 +1,27 @@
+require 'twitter'
+
+module AccountsHelper
+  @@client = Twitter::REST::Client.new do |config|
+    config.consumer_key        = "W3kwpQDuzH6UWmCVx7a8g"
+    config.consumer_secret     = "hI27isnjQIZwM56WxrfY7GHAU6IjMal63XOiCyaclA"
+    config.access_token        = "553242548-A2uYQbKY2mrux9jDG6krLhWOgwCP8Fd1s8Yj6pDY"
+    config.access_token_secret = "DLbjo9ZoRU4DmNn2uahDmGOjdXorNGOz26uIdGSr8I73R"
+  end
+  
+  def collect_with_max_id(collection=[], max_id=nil, num_tweets=50, &block)
+    response = yield(max_id)
+    collection += response.collect { |tweet| tweet.text + "ENDTWEET\n"}
+    response.length >= num_tweets ? collection.flatten : collect_with_max_id(collection, nil, num_tweets, &block)
+  end
+
+  def @@client.get_all_tweets(user)
+    collect_with_max_id do |max_id|
+      options = {:count => 200, :include_rts => true}
+      options[:max_id] = max_id unless max_id.nil?
+      user_timeline(user, options)
+    end
+  end
+#  client.user_timeline("philcrone", {:count => 10, :include_rts => true})
+ # puts client.get_all_tweets("philcrone")
+    
+end
