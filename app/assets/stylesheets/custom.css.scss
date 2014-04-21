@@ -17,6 +17,7 @@ h1 {
 #content {
   height: 100%;
   text-align: center;
+  color: white;
 }
 #spacer {
   height: 35%;
@@ -28,4 +29,29 @@ h1 {
 }
 #commit {
   font-size: 16pt;
+}
+.link {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:visited {
+    color: blue;
+  } 
+}
+.btn {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 16pt;
+  background: #66757f;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  border: none;
+  &:hover {
+    color: #ffffff;
+    background: #4c5961;
+    text-decoration: none;
+  }
 }

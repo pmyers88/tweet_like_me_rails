@@ -1,11 +1,10 @@
-<h1>Listing accounts</h1>
+<h2>Listing accounts</h2>
 
 <table>
   <thead>
     <tr>
       <th>Username</th>
-      <th>Corpus</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -13,10 +12,7 @@
     <% @accounts.each do |account| %>
       <tr>
         <td><%= account.username %></td>
-        <td><%= account.corpus %></td>
         <td><%= link_to 'Show', account %></td>
-        <td><%= link_to 'Edit', edit_account_path(account) %></td>
-        <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

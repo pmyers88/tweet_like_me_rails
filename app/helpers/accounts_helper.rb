@@ -8,10 +8,10 @@ module AccountsHelper
     config.access_token_secret = "DLbjo9ZoRU4DmNn2uahDmGOjdXorNGOz26uIdGSr8I73R"
   end
   
-  def self.collect_with_max_id(collection=[], max_id=nil, num_tweets=50, &block)
+  def self.collect_with_max_id(collection=[], max_id=nil, &block)
     response = yield(max_id)
     collection += response.collect { |tweet| tweet.text + " ENDTWEET\n"}
-    response.length >= num_tweets ? collection.flatten.join(" ") : collect_with_max_id(collection, nil, num_tweets, &block)
+    response.empty? ? collection.flatten.join(" ") : collect_with_max_id(collection, response.last.id - 1, &block)
   end
 
   def self.get_all_tweets(user)
@@ -32,11 +32,8 @@ module AccountsHelper
       tweet.push("")
       for i in 0...len 
         if i <= (len - n)
-          #puts "hi " + tweet[i...i+n].to_s
           key = tweet[i...i+n].freeze
-          #puts ngram[key]
           ngram[key] << tweet[i+n] 
-#          value.push(tweet[i+n])
         end
       end
     end 

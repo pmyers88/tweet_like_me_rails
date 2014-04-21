@@ -1,8 +1,9 @@
 <div id='content'>
   <div id='spacer'></div>
   <h1>Tweet Like Me</h1>
-  <%= form_for :account, url: accounts_path do |f| %>
+  <%= form_for :account, url: accounts_path, html: { :onsubmit => "return validate();" } do |f| %>
     <%= f.text_field :username %>
     <%= f.submit "Generate" %>
   <% end %>
+  <p>Tweet Like Me uses <%= link_to "n-grams", "http://en.wikipedia.org/wiki/N-gram", class: "link" %> to generate tweets based on what a use has previously tweeted. Enter a username to try it out!</p>
 </div>

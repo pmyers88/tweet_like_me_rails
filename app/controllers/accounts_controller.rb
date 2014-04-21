@@ -1,10 +1,13 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: [:show, :edit, :update, :destroy]
-  helper AccountsHelper
+  before_action :set_account, only: [:show ]
   # GET /accounts
   # GET /accounts.json
   def index
     @accounts = Account.all
+    respond_to do |format|
+      format.html
+      format.json {render :json => @accounts.to_json( :only => [:id, :username])}
+    end
   end
 
   # GET /accounts/1
@@ -24,13 +27,11 @@ class AccountsController < ApplicationController
   # POST /accounts
   # POST /accounts.json
   def create
-    username = account_params[:username]
-    corpus = AccountsHelper::get_all_tweets(username) 
-    @account = Account.new(username: username, corpus: corpus)
+    @account = Account.new(account_params)
 
     respond_to do |format|
       if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
+        format.html { redirect_to @account }
         format.json { render :show, status: :created, location: @account }
       else
         format.html { render :new }
