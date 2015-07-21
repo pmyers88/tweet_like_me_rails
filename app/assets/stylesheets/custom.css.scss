@@ -14,6 +14,12 @@ h1 {
   margin-bottom: 20px;
   font-size: 48pt;
 }
+input[type="text"] {
+  padding: 6px 6px;
+  height: 26px;
+  margin-bottom: 0px;
+  
+}
 #content {
   height: 100%;
   text-align: center;
@@ -39,7 +45,7 @@ h1 {
     color: blue;
   } 
 }
-/*.btn {
+.btn {
   -webkit-border-radius: 28;
   -moz-border-radius: 28;
   border-radius: 10px;
@@ -54,4 +60,4 @@ h1 {
     background: #4c5961;
     text-decoration: none;
   }
-}*/
+}
